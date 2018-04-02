@@ -1,6 +1,8 @@
+
 import re
 import numpy as np
 
+# read training data from input.txt
 def get_music():
     file = "input.txt"
     with open(file,"r") as f:
@@ -10,6 +12,7 @@ def get_music():
 
     return res
 
+# covert data to one-hot vector
 def input_vector(ch_set,music):
     vectors = np.zeros((len(music) - 1,len(ch_set)))
     for i in range(0,len(music) - 1):
@@ -17,6 +20,7 @@ def input_vector(ch_set,music):
         vectors[i,ch_set.index(music[i])] = 1
     return vectors
 
+# covert target to one-hot vector
 def target_vector(ch_set,music):
     targets = np.zeros((len(music) - 1 ,1))
     # print(targets)
